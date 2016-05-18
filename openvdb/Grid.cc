@@ -42,8 +42,9 @@ namespace OPENVDB_VERSION_NAME {
 
 /// @note For Houdini compatibility, boolean-valued metadata names
 /// should begin with "is_".
-const char
-    * const GridBase::META_GRID_CLASS = "class",
+	const char
+		* const GridBase::META_GRID_CLASS = "class";
+	const char
     * const GridBase::META_GRID_CREATOR = "creator",
     * const GridBase::META_GRID_NAME = "name",
     * const GridBase::META_SAVE_HALF_FLOAT = "is_saved_as_half_float",
