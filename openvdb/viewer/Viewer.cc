@@ -48,6 +48,11 @@
 #include <boost/thread/thread.hpp>
 #include <time.h> // for nanosleep()
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+
 #ifdef OPENVDB_USE_GLFW_3
 //#define GLFW_INCLUDE_GLU
 #include <GLFW/glfw3.h>
@@ -248,6 +253,7 @@ windowRefreshCB()
 Viewer
 init(const std::string& progName, bool background)
 {
+	glewInit();
     if (sViewer == NULL) {
         tbb::mutex::scoped_lock lock(sLock);
         if (sViewer == NULL) {
@@ -833,10 +839,14 @@ ViewerImpl::render()
 void
 ViewerImpl::sleep(double secs)
 {
+#ifdef _WIN32
+	Sleep(secs * 1000);
+#else
     secs = fabs(secs);
     int isecs = int(secs);
     struct timespec sleepTime = { isecs /*sec*/, int(1.0e9 * (secs - isecs)) /*nsec*/ };
     nanosleep(&sleepTime, /*remainingTime=*/NULL);
+#endif
 }
 
 

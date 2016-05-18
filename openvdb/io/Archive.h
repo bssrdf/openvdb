@@ -32,6 +32,7 @@
 #define OPENVDB_IO_ARCHIVE_HAS_BEEN_INCLUDED
 
 #include <openvdb/Platform.h>
+//#include <Platform.h>
 #include <iosfwd>
 #include <map>
 #include <string>
@@ -42,6 +43,9 @@
 #include <openvdb/Grid.h>
 #include <openvdb/metadata/MetaMap.h>
 #include <openvdb/version.h> // for VersionId
+//#include <Grid.h>
+//#include <metadata/MetaMap.h>
+//#include <version.h> // for VersionId
 #include "Compression.h" // for COMPRESS_ZIP, etc.
 
 

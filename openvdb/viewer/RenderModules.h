@@ -40,12 +40,17 @@
 
 #include <boost/random/mersenne_twister.hpp>
 
+#if defined(_WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(_WIN64)
+#include <windows.h>
+#endif
+
 #if defined(__APPLE__) || defined(MACOSX)
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #else
-#include <GL/gl.h>
-#include <GL/glu.h>
+//#include <GL/gl.h>
+//#include <GL/glu.h>
+#include <GL/glew.h>
 #endif
 
 
@@ -90,6 +95,7 @@ public:
 
     void build();
     void build(const std::vector<GLchar*>& attributes);
+	//void build(const std::vector<GLbyte*>& attributes);
 
     void startShading() const;
     void stopShading() const;

@@ -389,6 +389,7 @@ ShaderProgram::ShaderProgram():
     mVertShader(0),
     mFragShader(0)
 {
+	glewInit();
 }
 
 ShaderProgram::~ShaderProgram() { clear(); }
@@ -524,6 +525,7 @@ ViewportModule::render()
     glPushMatrix();
     glScalef(mGroundPlaneScale, mGroundPlaneScale, mGroundPlaneScale);
     glColor3d(0.6, 0.6, 0.6);
+	//glColor3d(1.0, 0.753, 0.796); //pink
 
     OPENVDB_NO_FP_EQUALITY_WARNING_BEGIN
 
@@ -1521,8 +1523,8 @@ MeshModule::MeshModule(const openvdb::GridBase::ConstPtr& grid):
 
     mShader.setFragShader(
         "#version 120\n"
-        "varying vec3 normal;\n"
-        "const vec4 skyColor = vec4(0.9, 0.9, 1.0, 1.0);\n"
+        "varying vec3 normal;\n"        
+		"const vec4 skyColor = vec4(1.0, 0.0, 1.0, 1.0);\n"
         "const vec4 groundColor = vec4(0.3, 0.3, 0.2, 1.0);\n"
         "void main() {\n"
             "vec3 normalized_normal = normalize(normal);\n"

@@ -32,6 +32,7 @@
 
 #include <cmath>
 
+
 #ifdef OPENVDB_USE_GLFW_3
 #define GLFW_INCLUDE_GLU
 #include <GLFW/glfw3.h>
